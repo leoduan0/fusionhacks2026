@@ -1,1 +1,2 @@
-# fusionhacks2026
+# Fusion Hacks 2026
+
