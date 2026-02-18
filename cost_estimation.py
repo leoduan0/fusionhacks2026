@@ -2,6 +2,9 @@ from desc.io import load
 import desc
 import numpy as np
 
+eq = load("precise_QA_output.h5")[-1]
+coilset = load("optimized_coilset_scaled.h5")
+
 
 def total_reactor_cost(eq, coilset, P_ext):
     """
@@ -59,3 +62,7 @@ def total_reactor_cost(eq, coilset, P_ext):
         + c_p * P_ext / p0
     )
     return cost
+
+
+if __name__ == "__main__":
+    print(f"Cost: {total_reactor_cost(eq, coilset, 50e6)}")

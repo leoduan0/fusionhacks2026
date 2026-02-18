@@ -221,9 +221,7 @@ def neutron_fluence(eq, T):
 
 
 if __name__ == "__main__":
-
     # plot <sigma v> for D-T as a function of T
-
     T = np.logspace(-1, 2, 10)
     sv = sigmav(T)
     plt.loglog(T, sv)
@@ -232,9 +230,8 @@ if __name__ == "__main__":
     plt.show()
 
     # compute neutron flux from an example reactor
-
-    eq = load("input.HELIOTRON_output.h5")[-1]
+    eq = load("precise_QA_output.h5")[-1]
     temp = temp_from_eq(eq, P_ext=10e6)
-    print(temp)
+    print(f"Temperature: {temp}")
     rate = neutron_fluence(eq, temp)
-    print(rate)
+    print(f"Rate: {rate}")

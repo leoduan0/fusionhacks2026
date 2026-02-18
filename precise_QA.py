@@ -7,7 +7,7 @@ equilibrium is slightly different from their VMEC solution.
 from desc import set_device
 
 # need to do this before importing other DESC stuff so JAX initializes properly
-set_device("gpu")
+set_device("mps")
 
 import numpy as np
 
@@ -56,16 +56,11 @@ for k in range(1, eq.M + 1):
     print("====================================")
     objective = ObjectiveFunction(
         (
-            # pass in the grid we defined, and don't forget the target helicity!
             QuasisymmetryTwoTerm(
                 eq=eqfam[-1], helicity=(1, 0), grid=grid, normalize=False
             ),
-            AspectRatio(eq=eqfam[-1], target=6, weight=10, normalize=False),
-            # this targets a profile pointwise, which is ok because we expect it to be
-            # fairly flat
-            RotationalTransform(eq=eqfam[-1], target=0.5, weight=10, normalize=False),
-            # we could optionally set normalize=True which would compute things in
-            # normalized/dimensionless units, effectively changing the weights
+            AspectRatio(eq=eqfam[-1], target=5, weight=10, normalize=False),
+            RotationalTransform(eq=eqfam[-1], target=0.47, weight=10, normalize=False),
         ),
     )
     # as opposed to SIMSOPT and STELLOPT where variables are assumed fixed, in DESC

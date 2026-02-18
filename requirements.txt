@@ -1,0 +1,6 @@
+desc-opt
+ipykernel
+matplotlib
+nbformat
+numpy
+scipy
